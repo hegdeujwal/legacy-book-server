@@ -2,7 +2,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "http://localhost:3001", // change this if deploying
+  baseURL: "https://legacy-book-server.onrender.com/",
 });
 
 // Attach token to every request if available
