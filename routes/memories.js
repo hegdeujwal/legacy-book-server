@@ -15,7 +15,7 @@ router.post("/", authenticateToken, async (req, res) => {
         title,
         message,
         mood,
-        imageUrl: image, // ✅ Store Cloudinary image URL
+        imageUrl: image,
         userId: req.user.userId,
       },
     });
@@ -27,7 +27,6 @@ router.post("/", authenticateToken, async (req, res) => {
   }
 });
 
-// 🔸 Get All Memories
 router.get("/", authenticateToken, async (req, res) => {
   try {
     const memories = await prisma.memory.findMany({
@@ -42,7 +41,6 @@ router.get("/", authenticateToken, async (req, res) => {
   }
 });
 
-// 🔸 Update Memory
 router.put("/:id", authenticateToken, async (req, res) => {
   const { id } = req.params;
   const { name, title, message, mood, image } = req.body;
@@ -58,7 +56,7 @@ router.put("/:id", authenticateToken, async (req, res) => {
         title,
         message,
         mood,
-        imageUrl: image, // ✅ Update image if changed
+        imageUrl: image,
       },
     });
 
@@ -75,7 +73,6 @@ router.put("/:id", authenticateToken, async (req, res) => {
   }
 });
 
-// 🔸 Delete Memory
 router.delete("/:id", authenticateToken, async (req, res) => {
   const { id } = req.params;
 
